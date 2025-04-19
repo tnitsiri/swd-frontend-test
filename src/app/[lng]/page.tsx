@@ -1,10 +1,27 @@
 import Image from 'next/image';
+import Switcher from '@/components/common/switcher';
 import styles from './page.module.css';
+import { getT } from '../i18n';
+import { Link } from '@/components/link';
 
-export default function Home() {
+/**
+ * ANCHOR Page
+ * @date 19/04/2025 - 21:47:21
+ *
+ * @async
+ * @returns {unknown}
+ */
+const Page = async () => {
+  const { t } = await getT();
+
+  // ANCHOR Render
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
+      <Switcher />
+      <h1>{t('Home')}</h1>
+      <Link href="/contact-us">{t('Contact Us')}</Link>
+
+      {/* <main className={styles.main}>
         <Image
           className={styles.logo}
           src="https://nextjs.org/icons/next.svg"
@@ -43,8 +60,8 @@ export default function Home() {
             Read our docs
           </a>
         </div>
-      </main>
-      <footer className={styles.footer}>
+      </main> */}
+      {/* <footer className={styles.footer}>
         <a
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           target="_blank"
@@ -84,7 +101,9 @@ export default function Home() {
           />
           Go to nextjs.org →
         </a>
-      </footer>
+      </footer> */}
     </div>
   );
-}
+};
+
+export default Page;
