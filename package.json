@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --dir ./src",
+    "lint:fix": "next lint --fix --dir ./src"
   },
   "dependencies": {
     "antd": "^5.20.6",
-    "i18next": "^23.15.1",
+    "i18next": "^23.16.8",
     "next": "14.2.12",
+    "next-i18next": "^15.4.2",
     "react": "^18",
     "react-dom": "^18",
     "redux-toolkit": "^1.1.2"
@@ -22,6 +24,10 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.12",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "prettier": "^3.5.3",
+    "sass": "^1.86.3",
     "typescript": "^5"
   }
 }
