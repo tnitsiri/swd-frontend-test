@@ -55,17 +55,21 @@
     }
   }
 
-  .square {
+  .square,
+  .circle,
+  .ellipse {
     width: $size;
     height: $size;
     background-color: $color;
   }
 
-  .circle {
-    width: $size;
-    height: $size;
-    background-color: $color;
+  .circle,
+  .ellipse {
     border-radius: 50%;
+  }
+
+  .ellipse {
+    width: $size * 1.8;
   }
 }
 
