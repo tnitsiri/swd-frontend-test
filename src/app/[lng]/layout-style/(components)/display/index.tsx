@@ -13,6 +13,7 @@ import { Col, Flex, Row } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 import { useEffect, useState } from 'react';
 import { LayoutStyleNodeInterface } from '@/interfaces/layout-style.interface';
+import { cloneDeep, shuffle } from 'lodash';
 
 /**
  * ANCHOR Display
@@ -54,8 +55,17 @@ const Display = () => {
    * ANCHOR Move Position
    * @date 20/04/2025 - 13:09:30
    */
-  const _movePosition = () => {
-    console.log('_movePosition');
+  const _movePosition = () => {};
+
+  /**
+   * ANCHOR Shuffle
+   * @date 20/04/2025 - 13:36:39
+   */
+  const _shuffle = () => {
+    const items: LayoutStyleNodeInterface[] = cloneDeep(nodes);
+    const list: LayoutStyleNodeInterface[] = shuffle(items);
+
+    setNodes(list);
   };
 
   /**
@@ -128,7 +138,7 @@ const Display = () => {
           {nodes.map((node) => {
             return (
               <Col key={node.id} span={8}>
-                {node.shape}
+                <div onClick={_shuffle}>{node.shape}</div>
               </Col>
             );
           })}

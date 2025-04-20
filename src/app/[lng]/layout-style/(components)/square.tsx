@@ -2,7 +2,7 @@ import styles from './styles.module.scss';
 
 /**
  * ANCHOR Square
- * @date 20/04/2025 - 10:09:06
+ * @date 20/04/2025 - 14:07:44
  *
  * @returns {*}
  */
