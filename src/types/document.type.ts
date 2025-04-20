@@ -11,7 +11,7 @@ import { ReactNode } from 'react';
 export type LayoutProps = {
   children: ReactNode;
   params: Promise<{
-    locale: LocaleEnum;
+    lng: LocaleEnum;
   }>;
 };
 
@@ -26,7 +26,7 @@ export type LayoutProps = {
 export type PageParams<P = unknown> = {
   params: Promise<P> &
     Promise<{
-      locale: LocaleEnum;
+      lng: LocaleEnum;
     }>;
 };
 
