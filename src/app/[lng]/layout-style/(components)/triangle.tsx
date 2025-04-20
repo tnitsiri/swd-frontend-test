@@ -26,16 +26,22 @@ const Triangle = (props: Props) => {
 
   // ANCHOR Render
   return (
-    <div className={styles.shape} onClick={onClick}>
+    <div
+      className={classNames({
+        [styles.shape]: true,
+        [styles.withTitle]: true,
+      })}
+      onClick={onClick}>
       {shapes.map((shape) => {
         return (
-          <div
-            key={shape}
-            className={classNames({
-              [styles.triangle]: true,
-              [styles[shape]]: true,
-            })}
-          />
+          <div key={shape} className={styles.triangle}>
+            <div
+              className={classNames({
+                [styles.draw]: true,
+                [styles[shape]]: true,
+              })}
+            />
+          </div>
         );
       })}
       <div className={styles.title}>

@@ -9,7 +9,7 @@ import Rectangle from '../rectangle';
 import Rhombus from '../rhombus';
 import { LayoutStyleShapeTriangleEnum } from '@/enums/layout-style.enum';
 import { useT } from '@/app/i18n/client';
-import { Col, Flex, Row, Space } from 'antd';
+import { Col, Row, Space } from 'antd';
 import { Fragment, useEffect, useState } from 'react';
 import { LayoutStyleNodeInterface } from '@/interfaces/layout-style.interface';
 import { cloneDeep, shuffle } from 'lodash';
@@ -112,15 +112,15 @@ const Display = () => {
   // ANCHOR Render
   return (
     <Space direction="vertical" size={55}>
-      <Flex gap="middle">
-        <Flex>
+      <Row justify="center" gutter={[18, 18]}>
+        <Col span={6}>
           <Triangle
             title={t('Move Shape')}
             shapes={[LayoutStyleShapeTriangleEnum.Left]}
             onClick={_moveShapeLeft}
           />
-        </Flex>
-        <Flex>
+        </Col>
+        <Col span={12}>
           <Triangle
             title={t('Move Position')}
             shapes={[
@@ -129,15 +129,15 @@ const Display = () => {
             ]}
             onClick={_movePosition}
           />
-        </Flex>
-        <Flex>
+        </Col>
+        <Col span={6}>
           <Triangle
             title={t('Move Shape')}
             shapes={[LayoutStyleShapeTriangleEnum.Right]}
             onClick={_moveShapeRight}
           />
-        </Flex>
-      </Flex>
+        </Col>
+      </Row>
       <Row justify="center" gutter={[18, 18]}>
         <Col span={isInverted ? 2 : 6} />
         {nodes.map((node, index) => {

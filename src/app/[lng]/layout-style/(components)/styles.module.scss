@@ -33,6 +33,11 @@
     }
   }
 
+  &.withTitle {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
   .title {
     position: absolute;
     bottom: 0;
@@ -51,49 +56,63 @@
   }
 
   .triangle {
-    $border-wide-width: 100px;
-    $border-narrow-width: 45px;
+    $border-wide-width: $size;
+    $border-narrow-width: $size / 2;
 
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-color: yellow;
-    
-    &.top {
-      border-top-width: $border-wide-width;
-      border-left-width: $border-narrow-width;
-      border-right-width: $border-narrow-width;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 
-      border-bottom-width: $border-wide-width;
-      border-bottom-color: $color;
-    }
-
-    &.bottom {
-      border-bottom-width: $border-wide-width;
-      border-left-width: $border-narrow-width;
-      border-right-width: $border-narrow-width;
-
-      border-top-width: $border-wide-width;
-      border-top-color: $color;
-    }
-
-    &.left {
-      border-top-width: $border-narrow-width;
-      border-bottom-width: $border-narrow-width;
-      border-left-width: $border-wide-width;
-
-      border-right-width: $border-wide-width;
-      border-right-color: $color;
-    }
-
-    &.right {
-      border-top-width: $border-narrow-width;
-      border-bottom-width: $border-narrow-width;
-      border-right-width: $border-wide-width;
-
-      border-left-width: $border-wide-width;
-      border-left-color: $color;
-    }
+    .draw {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: transparent;
+      
+      &.top {
+        border-top-width: $border-wide-width;
+        border-left-width: $border-narrow-width;
+        border-right-width: $border-narrow-width;
+  
+        border-bottom-width: $border-wide-width;
+        border-bottom-color: $color;
+  
+        margin-top: -$border-wide-width;
+      }
+  
+      &.bottom {
+        border-bottom-width: $border-wide-width;
+        border-left-width: $border-narrow-width;
+        border-right-width: $border-narrow-width;
+  
+        border-top-width: $border-wide-width;
+        border-top-color: $color;
+  
+        margin-bottom: -$border-wide-width;
+      }
+  
+      &.left {
+        border-top-width: $border-narrow-width;
+        border-bottom-width: $border-narrow-width;
+        border-left-width: $border-wide-width;
+  
+        border-right-width: $border-wide-width;
+        border-right-color: $color;
+  
+        margin-left: -$border-wide-width;
+      }
+  
+      &.right {
+        border-top-width: $border-narrow-width;
+        border-bottom-width: $border-narrow-width;
+        border-right-width: $border-wide-width;
+  
+        border-left-width: $border-wide-width;
+        border-left-color: $color;
+  
+        margin-right: -$border-wide-width;
+      }
+    }    
   }
 
   .square,

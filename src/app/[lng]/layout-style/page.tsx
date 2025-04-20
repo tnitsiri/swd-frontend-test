@@ -2,7 +2,6 @@ import Header from '@/components/header';
 import Display from './(components)/display';
 import styles from '@/assets/styles/page.module.scss';
 import { getT } from '@/app/i18n';
-import { Link } from '@/components/link';
 import { Layout } from 'antd';
 import { Content } from 'antd/es/layout/layout';
 
@@ -20,7 +19,6 @@ const Page = async () => {
   return (
     <div className={styles.page}>
       <Header topic={t('Layout & Style')} />
-      <Link href="/">{t('Home')}</Link>
 
       <Layout className={styles.layout}>
         <Content className={styles.content}>
