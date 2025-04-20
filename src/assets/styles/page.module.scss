@@ -5,4 +5,13 @@
   min-height: 100vh;
   background: $secondary-color;
   background: linear-gradient(25deg, rgba(110, 218, 120, 1) 0%, rgba(255, 162, 0, 1) 100%);
+
+  .layout {
+    background-color: transparent;
+    align-items: center;
+
+    .content {
+      max-width: $content-width;
+    }
+  }
 }

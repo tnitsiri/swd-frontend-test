@@ -23,7 +23,11 @@ const Header = (props: Props) => {
 
   // ANCHOR Render
   return (
-    <Row className="row">
+    <Row
+      className="row"
+      style={{
+        border: '1px solid #f00',
+      }}>
       <Col>
         <h1>{topic}</h1>
       </Col>

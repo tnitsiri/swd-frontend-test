@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './styles.module.scss';
-import { ShapeTriangleEnum } from '@/enums/shape.enum';
+import { LayoutStyleShapeTriangleEnum } from '@/enums/layout-style.enum';
 
 /**
  * ANCHOR Props
@@ -10,7 +10,7 @@ import { ShapeTriangleEnum } from '@/enums/shape.enum';
  */
 type Props = {
   title: string;
-  shapes: ShapeTriangleEnum[];
+  shapes: LayoutStyleShapeTriangleEnum[];
   onClick: () => void;
 };
 

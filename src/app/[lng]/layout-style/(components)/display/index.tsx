@@ -7,11 +7,10 @@ import Ellipse from '../ellipse';
 import Trapezoid from '../trapezoid';
 import Rectangle from '../rectangle';
 import Rhombus from '../rhombus';
-import { ShapeTriangleEnum } from '@/enums/shape.enum';
+import { LayoutStyleShapeTriangleEnum } from '@/enums/layout-style.enum';
 import { useT } from '@/app/i18n/client';
-import { Col, Flex, Row } from 'antd';
-import { Content } from 'antd/es/layout/layout';
-import { useEffect, useState } from 'react';
+import { Col, Flex, Row, Space } from 'antd';
+import { Fragment, useEffect, useState } from 'react';
 import { LayoutStyleNodeInterface } from '@/interfaces/layout-style.interface';
 import { cloneDeep, shuffle } from 'lodash';
 
@@ -25,6 +24,7 @@ const Display = () => {
   const { t } = useT('layout-style');
 
   const [nodes, setNodes] = useState<LayoutStyleNodeInterface[]>([]);
+  const [isInverted, setIsInverted] = useState<boolean>(false);
 
   /**
    * ANCHOR Move Shape Left
@@ -55,7 +55,9 @@ const Display = () => {
    * ANCHOR Move Position
    * @date 20/04/2025 - 13:09:30
    */
-  const _movePosition = () => {};
+  const _movePosition = () => {
+    setIsInverted((isInverted) => !isInverted);
+  };
 
   /**
    * ANCHOR Shuffle
@@ -109,42 +111,52 @@ const Display = () => {
 
   // ANCHOR Render
   return (
-    <Content style={{ padding: '0 48px' }}>
-      <Flex vertical={true} gap="middle">
-        <Flex gap="middle">
-          <Flex>
-            <Triangle
-              title={t('Move Shape')}
-              shapes={[ShapeTriangleEnum.Left]}
-              onClick={_moveShapeLeft}
-            />
-          </Flex>
-          <Flex>
-            <Triangle
-              title={t('Move Position')}
-              shapes={[ShapeTriangleEnum.Top, ShapeTriangleEnum.Bottom]}
-              onClick={_movePosition}
-            />
-          </Flex>
-          <Flex>
-            <Triangle
-              title={t('Move Shape')}
-              shapes={[ShapeTriangleEnum.Right]}
-              onClick={_moveShapeRight}
-            />
-          </Flex>
+    <Space direction="vertical" size={55}>
+      <Flex gap="middle">
+        <Flex>
+          <Triangle
+            title={t('Move Shape')}
+            shapes={[LayoutStyleShapeTriangleEnum.Left]}
+            onClick={_moveShapeLeft}
+          />
         </Flex>
-        <Row gutter={[16, 16]}>
-          {nodes.map((node) => {
-            return (
-              <Col key={node.id} span={8}>
+        <Flex>
+          <Triangle
+            title={t('Move Position')}
+            shapes={[
+              LayoutStyleShapeTriangleEnum.Top,
+              LayoutStyleShapeTriangleEnum.Bottom,
+            ]}
+            onClick={_movePosition}
+          />
+        </Flex>
+        <Flex>
+          <Triangle
+            title={t('Move Shape')}
+            shapes={[LayoutStyleShapeTriangleEnum.Right]}
+            onClick={_moveShapeRight}
+          />
+        </Flex>
+      </Flex>
+      <Row justify="center" gutter={[18, 18]}>
+        <Col span={isInverted ? 2 : 6} />
+        {nodes.map((node, index) => {
+          return (
+            <Fragment key={node.id}>
+              <Col span={6}>
                 <div onClick={_shuffle}>{node.shape}</div>
               </Col>
-            );
-          })}
-        </Row>
-      </Flex>
-    </Content>
+              {isInverted && index == 2 && (
+                <>
+                  <Col span={2} />
+                  <Col span={6} />
+                </>
+              )}
+            </Fragment>
+          );
+        })}
+      </Row>
+    </Space>
   );
 };
 
