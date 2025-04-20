@@ -1,6 +1,7 @@
 import Header from '@/components/header';
 import Triangle from './(components)/triangle';
 import Square from './(components)/square';
+import Circle from './(components)/circle';
 import styles from '@/assets/styles/page.module.scss';
 import { getT } from '@/app/i18n';
 import { Link } from '@/components/link';
@@ -47,6 +48,9 @@ const Page = async () => {
             <Flex gap="middle">
               <Flex>
                 <Square />
+              </Flex>
+              <Flex>
+                <Circle />
               </Flex>
             </Flex>
           </Flex>
