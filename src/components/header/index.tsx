@@ -1,4 +1,5 @@
 import Switcher from '../switcher';
+import styles from './styles.module.scss';
 import { Col, Row } from 'antd';
 
 /**
@@ -23,15 +24,11 @@ const Header = (props: Props) => {
 
   // ANCHOR Render
   return (
-    <Row
-      className="row"
-      style={{
-        border: '1px solid #f00',
-      }}>
-      <Col>
+    <Row className={styles.header}>
+      <Col flex={1} className={styles.topic}>
         <h1>{topic}</h1>
       </Col>
-      <Col flex="1 0 auto" className="column Green">
+      <Col>
         <Switcher />
       </Col>
     </Row>

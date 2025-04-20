@@ -19,7 +19,6 @@ const Page = async () => {
   return (
     <div className={styles.page}>
       <Header topic={t('Layout & Style')} />
-
       <Layout className={styles.layout}>
         <Content className={styles.content}>
           <Display />

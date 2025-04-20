@@ -22,6 +22,8 @@ const Switcher = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
+  const locale: LocaleEnum = i18n.resolvedLanguage as LocaleEnum;
+
   /**
    * ANCHOR Changed
    * @date 19/04/2025 - 22:24:17
@@ -29,7 +31,6 @@ const Switcher = () => {
    * @param {{ locale: LocaleEnum }} payload
    */
   const _changed = (payload: { locale: LocaleEnum }) => {
-    const locale: LocaleEnum = i18n.resolvedLanguage as LocaleEnum;
     let path: string = pathname;
 
     if (pathname.startsWith(`/${locale}`)) {
@@ -84,7 +85,7 @@ const Switcher = () => {
       }}>
       <Button>
         <Space>
-          Button
+          {LocaleLabel[locale].title}
           <TranslationOutlined />
         </Space>
       </Button>
