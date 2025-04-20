@@ -1,4 +1,4 @@
-import Switcher from '@/components/common/switcher';
+import Switcher from '@/components/switcher';
 import { getT } from '@/app/i18n';
 import { Link } from '@/components/link';
 

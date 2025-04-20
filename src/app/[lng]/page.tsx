@@ -1,8 +1,10 @@
 import Image from 'next/image';
-import Switcher from '@/components/common/switcher';
-import styles from './page.module.css';
+import Switcher from '@/components/switcher';
+import Header from '@/components/header';
+import styles from '@/assets/styles/page.module.scss';
 import { getT } from '../i18n';
 import { Link } from '@/components/link';
+import { Layout } from 'antd';
 
 /**
  * ANCHOR Page
@@ -17,9 +19,9 @@ const Page = async () => {
   // ANCHOR Render
   return (
     <div className={styles.page}>
-      <Switcher />
-      <h1>{t('Home')}</h1>
+      <Header topic={t('Home')} />
       <Link href="/contact-us">{t('Contact Us')}</Link>
+      <Link href="/layout-style">{t('Layout & Style')}</Link>
 
       {/* <main className={styles.main}>
         <Image
