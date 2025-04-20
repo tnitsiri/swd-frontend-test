@@ -3,6 +3,8 @@ import Triangle from './(components)/triangle';
 import Square from './(components)/square';
 import Circle from './(components)/circle';
 import Ellipse from './(components)/ellipse';
+import Trapezoid from './(components)/trapezoid';
+import Rectangle from './(components)/rectangle';
 import styles from '@/assets/styles/page.module.scss';
 import { getT } from '@/app/i18n';
 import { Link } from '@/components/link';
@@ -55,6 +57,14 @@ const Page = async () => {
               </Flex>
               <Flex>
                 <Ellipse />
+              </Flex>
+            </Flex>
+            <Flex gap="middle">
+              <Flex>
+                <Trapezoid />
+              </Flex>
+              <Flex>
+                <Rectangle />
               </Flex>
             </Flex>
           </Flex>

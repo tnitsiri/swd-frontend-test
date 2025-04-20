@@ -57,7 +57,8 @@
 
   .square,
   .circle,
-  .ellipse {
+  .ellipse,
+  .rectangle {
     width: $size;
     height: $size;
     background-color: $color;
@@ -70,6 +71,14 @@
 
   .ellipse {
     width: $size * 1.8;
+  }
+
+  .trapezoid {
+
+  }
+
+  .rectangle {
+    width: $size * 2;
   }
 }
 
