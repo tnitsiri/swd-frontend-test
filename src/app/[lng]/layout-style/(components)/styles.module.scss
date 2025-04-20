@@ -77,7 +77,8 @@
     width: $size * 2;
   }
 
-  .trapezoid {
+  .trapezoid,
+  .rhombus {
     position: relative;
     width: $size * 2.5;
     height: $size;
@@ -90,17 +91,26 @@
       width: 0;
       height: 0;
       border-top: $size solid white;
-    }
 
-    .left {
-      left: 0;
-      border-right: $size / 2.3 solid transparent;
+      &.left {
+        left: 0;
+        border-right: $size / 2.3 solid transparent;
+      }
+  
+      &.right {
+        right: 0;
+        border-left: $size / 2.3 solid transparent;
+      }
     }
+  }
 
-    .right {
-      right: 0;
-      border-left: $size / 2.3 solid transparent;
+  .rhombus {
+    .slice {
+      &.left {
+        border-top-color: $color;
+        border-left: $size / 2.3 solid white;
+        border-right: 0;
+      }
     }
   }
 }
-

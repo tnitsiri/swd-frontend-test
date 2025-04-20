@@ -5,6 +5,7 @@ import Circle from './(components)/circle';
 import Ellipse from './(components)/ellipse';
 import Trapezoid from './(components)/trapezoid';
 import Rectangle from './(components)/rectangle';
+import Rhombus from './(components)/rhombus';
 import styles from '@/assets/styles/page.module.scss';
 import { getT } from '@/app/i18n';
 import { Link } from '@/components/link';
@@ -65,6 +66,9 @@ const Page = async () => {
               </Flex>
               <Flex>
                 <Rectangle />
+              </Flex>
+              <Flex>
+                <Rhombus />
               </Flex>
             </Flex>
           </Flex>
