@@ -1,3 +1,4 @@
+import StoreProvider from '@/stores/provider';
 import Body from '@/components/body';
 import './globals.css';
 import type { Metadata } from 'next';
@@ -42,7 +43,9 @@ const Layout = async (props: LayoutProps) => {
   // ANCHOR Render
   return (
     <html lang={lng}>
-      <Body>{children}</Body>
+      <StoreProvider locale={lng}>
+        <Body>{children}</Body>
+      </StoreProvider>
     </html>
   );
 };

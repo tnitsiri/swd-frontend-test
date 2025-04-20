@@ -42,7 +42,7 @@ const Page = async () => {
               </Link>
             </Col>
             <Col>
-              <Link href="/layout-style">
+              <Link href="/form-table">
                 <span>
                   <Card
                     title={t('Test 3')}
