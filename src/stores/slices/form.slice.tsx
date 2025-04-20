@@ -1,3 +1,8 @@
+import {
+  FormTableGenderEnum,
+  FormTableNationalityEnum,
+  FormTableTitleEnum,
+} from '@/enums/form-table.enum';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 /**
@@ -9,7 +14,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
  * @typedef {FormState}
  */
 export interface FormState {
+  title: FormTableTitleEnum | null;
   firstName: string;
+  lastName: string;
+  birthday: string | null;
+  nationality: FormTableNationalityEnum | null;
+  citizenId: string;
+  gender: FormTableGenderEnum | null;
+  countryCode: string;
+  mobilePhone: string;
+  passportNo: string;
+  expectedSalary: number | null;
 }
 
 /**
@@ -19,7 +34,17 @@ export interface FormState {
  * @type {FormState}
  */
 const initialState: FormState = {
+  title: null,
   firstName: '',
+  lastName: '',
+  birthday: null,
+  nationality: null,
+  citizenId: '',
+  gender: null,
+  countryCode: '',
+  mobilePhone: '',
+  passportNo: '',
+  expectedSalary: null,
 };
 
 /**
