@@ -1,13 +1,52 @@
-
+@import '@/assets/styles/variables';
 
 .shape {
   $size: 100px;
   $color: #808080;
 
   position: relative;
+  display: flex;
+  flex-direction: row;
   background-color: #fff;
   border-radius: 16px;
   padding: 18px;
+
+  &:hover {
+    background-color: $primary-color;
+    cursor: pointer;
+
+    .trapezoid,
+    .rhombus {
+      .slice {
+        border-top-color: $primary-color;
+      }
+    }
+
+    .rhombus {
+      .slice {
+        &.left {
+          border-left-color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-bottom: -12px;
+    display: flex;
+    justify-content: center;
+
+    span {
+      background-color: $secondary-color;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 23px;
+    }
+  }
 
   .triangle {
     $border-wide-width: 100px;
@@ -90,7 +129,7 @@
       bottom: 0;
       width: 0;
       height: 0;
-      border-top: $size solid white;
+      border-top: $size solid #fff;
 
       &.left {
         left: 0;
@@ -108,7 +147,7 @@
     .slice {
       &.left {
         border-top-color: $color;
-        border-left: $size / 2.3 solid white;
+        border-left: $size / 2.3 solid #fff;
         border-right: 0;
       }
     }

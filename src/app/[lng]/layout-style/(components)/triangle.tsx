@@ -9,7 +9,9 @@ import { ShapeTriangleEnum } from '@/enums/shape.enum';
  * @typedef {Props}
  */
 type Props = {
-  shape: ShapeTriangleEnum;
+  title: string;
+  shapes: ShapeTriangleEnum[];
+  onClick: () => void;
 };
 
 /**
@@ -20,17 +22,25 @@ type Props = {
  * @returns {*}
  */
 const Triangle = (props: Props) => {
-  const { shape } = props;
+  const { title, shapes, onClick } = props;
 
   // ANCHOR Render
   return (
-    <div className={styles.shape}>
-      <div
-        className={classNames({
-          [styles.triangle]: true,
-          [styles[shape]]: true,
-        })}
-      />
+    <div className={styles.shape} onClick={onClick}>
+      {shapes.map((shape) => {
+        return (
+          <div
+            key={shape}
+            className={classNames({
+              [styles.triangle]: true,
+              [styles[shape]]: true,
+            })}
+          />
+        );
+      })}
+      <div className={styles.title}>
+        <span>{title}</span>
+      </div>
     </div>
   );
 };
