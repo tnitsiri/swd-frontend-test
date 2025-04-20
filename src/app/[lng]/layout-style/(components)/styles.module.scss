@@ -1,14 +1,14 @@
 
 
 .shape {
+  $active-color: #808080;
+
   position: relative;
   background-color: #fff;
   border-radius: 16px;
   padding: 18px;
 
   .triangle {
-    $active-color: #808080;
-
     $border-wide-width: 100px;
     $border-narrow-width: 45px;
 
@@ -52,6 +52,12 @@
       border-left-width: $border-wide-width;
       border-left-color: $active-color;
     }
+  }
+
+  .square {
+    width: 80px;
+    height: 80px;
+    background-color: $active-color;
   }
 }
 

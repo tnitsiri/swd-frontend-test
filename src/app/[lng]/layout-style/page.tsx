@@ -1,5 +1,6 @@
 import Header from '@/components/header';
 import Triangle from './(components)/triangle';
+import Square from './(components)/square';
 import styles from '@/assets/styles/page.module.scss';
 import { getT } from '@/app/i18n';
 import { Link } from '@/components/link';
@@ -28,18 +29,25 @@ const Page = async () => {
           backgroundColor: 'transparent',
         }}>
         <Content style={{ padding: '0 48px' }}>
-          <Flex gap="middle">
-            <Flex>
-              <Triangle shape={ShapeTriangleEnum.Left} />
+          <Flex vertical={true} gap="middle">
+            <Flex gap="middle">
+              <Flex>
+                <Triangle shape={ShapeTriangleEnum.Left} />
+              </Flex>
+              <Flex>
+                <Triangle shape={ShapeTriangleEnum.Top} />
+              </Flex>
+              <Flex>
+                <Triangle shape={ShapeTriangleEnum.Bottom} />
+              </Flex>
+              <Flex>
+                <Triangle shape={ShapeTriangleEnum.Right} />
+              </Flex>
             </Flex>
-            <Flex>
-              <Triangle shape={ShapeTriangleEnum.Top} />
-            </Flex>
-            <Flex>
-              <Triangle shape={ShapeTriangleEnum.Bottom} />
-            </Flex>
-            <Flex>
-              <Triangle shape={ShapeTriangleEnum.Right} />
+            <Flex gap="middle">
+              <Flex>
+                <Square />
+              </Flex>
             </Flex>
           </Flex>
         </Content>
