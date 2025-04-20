@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import styles from './styles.module.scss';
 
 /**
@@ -10,7 +11,20 @@ const Trapezoid = () => {
   // ANCHOR Render
   return (
     <div className={styles.shape}>
-      <div className={styles.trapezoid} />
+      <div className={styles.trapezoid}>
+        <div
+          className={classNames({
+            [styles.slice]: true,
+            [styles.left]: true,
+          })}
+        />
+        <div
+          className={classNames({
+            [styles.slice]: true,
+            [styles.right]: true,
+          })}
+        />
+      </div>
     </div>
   );
 };

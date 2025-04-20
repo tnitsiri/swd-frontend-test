@@ -73,12 +73,34 @@
     width: $size * 1.8;
   }
 
-  .trapezoid {
-
-  }
-
   .rectangle {
     width: $size * 2;
+  }
+
+  .trapezoid {
+    position: relative;
+    width: $size * 2.5;
+    height: $size;
+    background-color: $color;
+
+    .slice {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-top: $size solid white;
+    }
+
+    .left {
+      left: 0;
+      border-right: $size / 2.3 solid transparent;
+    }
+
+    .right {
+      right: 0;
+      border-left: $size / 2.3 solid transparent;
+    }
   }
 }
 
