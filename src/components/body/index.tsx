@@ -1,5 +1,6 @@
 'use client';
 
+import classNames from 'classnames';
 import localFont from 'next/font/local';
 import { ReactNode } from 'react';
 import { HashLoader } from 'react-spinners';
@@ -52,7 +53,11 @@ const Body = (props: Props) => {
 
   // ANCHOR Render
   return (
-    <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <body
+      className={classNames({
+        [geistSans.variable]: true,
+        [geistMono.variable]: true,
+      })}>
       <Preloader>
         {children}
         <Placeholder>

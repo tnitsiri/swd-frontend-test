@@ -13,6 +13,14 @@
     .content {
       max-width: $content-width;
       padding: 30px 50px;
+
+      &.center {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vW;
+        height: calc(100vh - 150px);
+      }
     }
   }
 }

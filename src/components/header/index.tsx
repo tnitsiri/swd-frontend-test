@@ -9,7 +9,7 @@ import { Col, Row } from 'antd';
  * @typedef {Props}
  */
 type Props = {
-  topic: string;
+  topic?: string;
 };
 
 /**
