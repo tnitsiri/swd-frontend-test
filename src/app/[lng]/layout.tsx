@@ -1,32 +1,8 @@
-import localFont from 'next/font/local';
+import Body from '@/components/body';
 import './globals.css';
 import type { Metadata } from 'next';
 import { languages } from '../i18n/settings';
 import { LayoutProps } from '@/types/document.type';
-
-/**
- * ANCHOR Geist Sans
- * @date 19/04/2025 - 21:05:19
- *
- * @type {*}
- */
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
-});
-
-/**
- * ANCHOR Geist Mono
- * @date 19/04/2025 - 21:05:06
- *
- * @type {*}
- */
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
-});
 
 /**
  * ANCHOR Metadata
@@ -66,9 +42,7 @@ const Layout = async (props: LayoutProps) => {
   // ANCHOR Render
   return (
     <html lang={lng}>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+      <Body>{children}</Body>
     </html>
   );
 };
