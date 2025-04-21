@@ -227,6 +227,7 @@ const Index = (props: Props) => {
           <Input
             value={firstName}
             maxLength={50}
+            autoFocus={true}
             onInput={(e) => {
               dispatch(
                 setForm({
