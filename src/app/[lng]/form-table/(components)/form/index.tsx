@@ -1,5 +1,6 @@
 'use client';
 
+import $ from 'jquery';
 import MaskedInput from 'antd-mask-input';
 import dayjs from 'dayjs';
 import styles from './styles.module.scss';
@@ -11,6 +12,7 @@ import {
   DatePicker,
   Radio,
   InputNumber,
+  Flex,
 } from 'antd';
 import {
   FormTableGenderEnum,
@@ -20,9 +22,22 @@ import {
 import { setForm } from '@/stores/slices/form.slice';
 import { useAppDispatch, useAppSelector } from '@/stores/hook';
 import { useT } from '@/app/i18n/client';
-import { SyntheticEvent } from 'react';
+import { MutableRefObject, SyntheticEvent, useRef } from 'react';
 import { v1 as uuidv1 } from 'uuid';
 import { PersonModel } from '@/models/person.model';
+
+/**
+ * ANCHOR Props
+ * @date 21/04/2025 - 10:28:11
+ *
+ * @typedef {Props}
+ */
+type Props = {
+  formKey: string;
+  onCreated: (person: PersonModel) => void;
+  updatingPerson: PersonModel | null;
+  onUpdated: (person: PersonModel) => void;
+};
 
 /**
  * ANCHOR Inputs
@@ -46,11 +61,13 @@ type Inputs = {
 
 /**
  * ANCHOR Index
- * @date 20/04/2025 - 18:44:09
+ * @date 21/04/2025 - 10:28:23
  *
+ * @param {Props} props
  * @returns {*}
  */
-const Index = () => {
+const Index = (props: Props) => {
+  const { formKey, onCreated, updatingPerson, onUpdated } = props;
   const { t } = useT('form-table');
   const {
     title,
@@ -68,13 +85,31 @@ const Index = () => {
 
   const dispatch = useAppDispatch();
 
+  const resetRef: MutableRefObject<HTMLButtonElement> | undefined =
+    useRef<HTMLButtonElement>() as
+      | MutableRefObject<HTMLButtonElement>
+      | undefined;
+
   /**
    * ANCHOR Save
    * @date 21/04/2025 - 06:55:38
    */
   const _save = () => {
+    // key
+    let key: string = '';
+
+    // update
+    if (updatingPerson) {
+      key = updatingPerson.key;
+    }
+    // create
+    else {
+      key = uuidv1();
+    }
+
+    // person
     const person: PersonModel = {
-      key: uuidv1(),
+      key,
       title: title!,
       firstName,
       lastName,
@@ -88,7 +123,23 @@ const Index = () => {
       expectedSalary,
     };
 
-    console.log(JSON.stringify(person));
+    // update
+    if (updatingPerson) {
+      onUpdated(person);
+    }
+    // create
+    else {
+      onCreated(person);
+    }
+
+    // reset
+    _reset();
+
+    setTimeout(() => {
+      if (resetRef && resetRef?.current) {
+        $(resetRef.current).trigger('click');
+      }
+    });
   };
 
   /**
@@ -112,10 +163,12 @@ const Index = () => {
       }),
     );
   };
+
   // ANCHOR Render
   return (
     <div className={styles.form}>
       <Form<Inputs>
+        key={formKey}
         labelCol={{ span: 4 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
@@ -425,25 +478,38 @@ const Index = () => {
             }}
           />
         </Form.Item>
-        <Form.Item>
-          <Button
-            type="default"
-            htmlType="reset"
-            style={{
-              textTransform: 'uppercase',
-            }}
-            onClick={_reset}>
-            {t('Reset')}
-          </Button>
-          <Button
-            type="default"
-            htmlType="submit"
-            style={{
-              textTransform: 'uppercase',
-            }}>
-            {t('Submit')}
-          </Button>
+        <Form.Item
+          label=" "
+          style={{
+            marginTop: 30,
+          }}>
+          <Flex gap={12}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{
+                textTransform: 'uppercase',
+              }}>
+              {t('Submit')}
+            </Button>
+            <Button
+              type="default"
+              htmlType="reset"
+              style={{
+                textTransform: 'uppercase',
+              }}
+              onClick={_reset}>
+              {t('Reset')}
+            </Button>
+          </Flex>
         </Form.Item>
+        <button
+          ref={resetRef}
+          type="reset"
+          style={{
+            display: 'none',
+          }}
+        />
       </Form>
     </div>
   );
