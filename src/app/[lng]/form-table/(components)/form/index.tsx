@@ -21,6 +21,8 @@ import { setForm } from '@/stores/slices/form.slice';
 import { useAppDispatch, useAppSelector } from '@/stores/hook';
 import { useT } from '@/app/i18n/client';
 import { SyntheticEvent } from 'react';
+import { v1 as uuidv1 } from 'uuid';
+import { PersonModel } from '@/models/person.model';
 
 /**
  * ANCHOR Inputs
@@ -68,12 +70,25 @@ const Index = () => {
 
   /**
    * ANCHOR Save
-   * @date 20/04/2025 - 18:37:31
-   *
-   * @param {FormEvent} e
+   * @date 21/04/2025 - 06:55:38
    */
   const _save = () => {
-    console.log(title);
+    const person: PersonModel = {
+      key: uuidv1(),
+      title: title!,
+      firstName,
+      lastName,
+      birthday: birthday!,
+      nationality: nationality!,
+      citizenId: citizenId || null,
+      gender: gender!,
+      countryCode,
+      mobilePhone,
+      passportNo: passportNo || null,
+      expectedSalary,
+    };
+
+    console.log(JSON.stringify(person));
   };
 
   /**
@@ -246,12 +261,14 @@ const Index = () => {
           name="citizenId"
           rules={[
             {
-              required: true,
-              message: t('Please specify citizen id'),
               validator: (_, value) => {
                 const text: string = value.replace(/\D/g, '');
 
-                if (text.length == 13) {
+                if (
+                  !value ||
+                  value == '_ - ____ - _____ - __ - _' ||
+                  text.length == 13
+                ) {
                   return Promise.resolve();
                 }
 
@@ -285,7 +302,15 @@ const Index = () => {
               message: t('Please specify gender'),
             },
           ]}>
-          <Radio.Group value={gender}>
+          <Radio.Group
+            value={gender}
+            onChange={(e) => {
+              dispatch(
+                setForm({
+                  gender: e.target.value,
+                }),
+              );
+            }}>
             {Object.values(FormTableGenderEnum).map((gender) => {
               return (
                 <Radio key={gender} value={gender}>

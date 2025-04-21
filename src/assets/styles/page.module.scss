@@ -11,8 +11,9 @@
     align-items: center;
 
     .content {
+      width: 100%;
       max-width: $content-width;
-      padding: 30px 50px;
+      padding: 30px 50px 100px 50px;
 
       &.center {
         display: flex;

@@ -33,5 +33,12 @@
   "Mobile phone length is incorrect": "หมายเลขโทรศัพท์มือถือไม่ถูกต้อง",
   "Please specify country code": "กรุณาระบุรหัสประเทศ",
   "CitizenID": "เลขบัตรประชาชน",
-  "Please specify citizen id": "กรุณาระบุเลขบัตรประชาชน"
+  "Please specify citizen id": "กรุณาระบุเลขบัตรประชาชน",
+  "Name": "ชื่อ",
+  "Manage": "จัดการ",
+  "Previous": "ก่อนหน้า",
+  "Next": "ถัดไป",
+  "Edit": "แก้ไขข้อมูล",
+  "Delete": "ลบข้อมูล",
+  "Delete Success": "ลบสำเร็จแล้ว"
 }

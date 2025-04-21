@@ -33,5 +33,12 @@
   "Mobile phone length is incorrect": "Mobile phone length is incorrect",
   "Please specify country code": "Please specify country code",
   "CitizenID": "CitizenID",
-  "Please specify citizen id": "Please specify citizen id"
+  "Please specify citizen id": "Please specify citizen id",
+  "Name": "Name",
+  "Manage": "MANAGE",
+  "Previous": "PREV",
+  "Next": "NEXT",
+  "Edit": "Edit",
+  "Delete": "Delete",
+  "Delete Success": "Delete Success"
 }
