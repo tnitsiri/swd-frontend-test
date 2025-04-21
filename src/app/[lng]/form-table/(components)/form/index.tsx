@@ -272,6 +272,9 @@ const Index = (props: Props) => {
             placeholder={t('BirthdayPattern')}
             format="MM/DD/YY"
             maxDate={dayjs()}
+            style={{
+              width: '33%',
+            }}
             onChange={(_, dateString) => {
               dispatch(
                 setForm({
@@ -469,6 +472,9 @@ const Index = (props: Props) => {
           <InputNumber
             value={expectedSalary}
             maxLength={8}
+            style={{
+              width: '33%',
+            }}
             onChange={(v) => {
               dispatch(
                 setForm({

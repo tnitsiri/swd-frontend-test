@@ -1,6 +1,10 @@
+'use client';
+
 import Switcher from '../switcher';
 import styles from './styles.module.scss';
 import { Col, Row } from 'antd';
+import { useT } from '@/app/i18n/client';
+import { Link } from '../link/client';
 
 /**
  * ANCHOR Props
@@ -21,12 +25,23 @@ type Props = {
  */
 const Header = (props: Props) => {
   const { topic } = props;
+  const { t } = useT();
 
   // ANCHOR Render
   return (
     <Row className={styles.header}>
       <Col flex={1} className={styles.topic}>
-        <h1>{topic}</h1>
+        {topic && (
+          <Row align="middle" gutter={25}>
+            <Col>
+              <h1>{topic}</h1>
+            </Col>
+            <Col>|</Col>
+            <Col>
+              <Link href="/">{t('Home')}</Link>
+            </Col>
+          </Row>
+        )}
       </Col>
       <Col>
         <Switcher />
